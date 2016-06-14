@@ -40,11 +40,13 @@ public class Sim2DPanel extends FramePanel {
 		square.lock();
 
 		RigidBody body = new RigidBody(square.rotate(30.0));
+		body.setPos(0.0, 4.0);
 		bodies.add(body);
 	}
 
 	@Override
 	public void destroy() {
+		for (int i=0;i<bodies.size();i++) bodies.get(i).destroy();
 		shader.destroy();
 	}
 
@@ -58,7 +60,10 @@ public class Sim2DPanel extends FramePanel {
 
 	@Override
 	public void update(double time) {
-		for (int i=0;i<bodies.size();i++) bodies.get(i).update(time);
+		for (int i=0;i<bodies.size();i++) {
+			bodies.get(i).applyForce(0.0, -0.001);
+			bodies.get(i).update(time);
+		}
 	}
 
 	@Override

@@ -16,8 +16,9 @@ public class Shape2D {
 	public void add(double x, double y) {add(new Vec3D(x, y, 1.0));}
 	public void lock() {lock = true;}
 
-	public Vec3D get(int index) {return vertices.get(index);}
 	public int size() {return vertices.size();}
+
+	public Vec3D get(int index) {return vertices.get(index);}
 
 	public Vec2D center() {
 		double x = 0.0, y = 0.0;
